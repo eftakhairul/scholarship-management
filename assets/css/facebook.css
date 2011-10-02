@@ -1,0 +1,52 @@
+#hld {
+	background-image: none;
+}
+
+div.wrapper {
+	min-width: 758px;
+	paddin-top: 0;
+	width: 758px;
+}
+
+#header {
+	background-image: none;
+	background-color: #000;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding-left: 0;
+	margin-bottom: 15px;
+}
+
+.block {
+	background-image: none;
+	background-color: #fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	overflow: auto;
+}
+
+.block .block_content {
+	background-image: none;
+	background-color: #fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	overflow: auto;
+}
+
+.fb_iframe_widget iframe {
+	width: 700px !important;
+}
+
+.block h3 {
+    margin-bottom: 5px;
+}
+
+.map-large {
+    width: 755px;
+    height: 500px;
+}
+
+.map-medium {
+    width: 500px;
+    height: 300px;
+}
