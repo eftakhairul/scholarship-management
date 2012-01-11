@@ -1,9 +1,11 @@
 <?php
 
 /**
- * DateHelper
+ * Description of Date Library
  *
- * @author eftakhairul
+ * @package     Library
+ * @author      Eftakhairul Islma <eftakhairul@gmail.com>
+ * @website     http://eftakhairul.com
  */
 
 class DateHelper

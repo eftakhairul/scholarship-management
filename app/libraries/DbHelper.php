@@ -1,9 +1,11 @@
 <?php
 
 /**
- * DbHelper
+ * Description of Database Library
  *
- * @author Eftakhairul
+ * @package     Library
+ * @author      Eftakhairul Islam <eftakhairul@gmail.com>
+ * @website     http://eftakhairul.com
  */
 
 class DbHelper

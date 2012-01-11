@@ -2,32 +2,31 @@
 
 class Layout
 {
-    var $registry;
-    var $layout;
+	public $registry;
+	public $layout;
 
-    function Layout($layout = "layouts/main")
-    {
-        $this->obj =& get_instance();
-        $this->layout = $layout;
-    }
+	public function Layout($layout = "layouts/main")
+	{
+		$this->obj =& get_instance();
+		$this->layout = $layout;
+	}
 
-    function setLayout($layout)
-    {
-      $this->layout = $layout;
-    }
+	public function setLayout($layout)
+	{
+	  $this->layout = $layout;
+	}
 
-    function view($view, $data=null, $return=false)
-    {
-        $data['content_for_layout'] = $this->obj->load->view($view,$data,true);
+	public function view($view, $data=null, $return=false)
+	{
+		$data['content_for_layout'] = $this->obj->load->view($view,$data, true);
 
-        if($return)
-        {
-            $output = $this->obj->load->view($this->layout,$data, true);
-            return $output;
-        }
-        else
-        {
-            $this->obj->load->view($this->layout,$data, false);
-        }
-    }
+		if($return) {
+
+			$output = $this->obj->load->view($this->layout, $data, true);
+			return $output;
+
+		} else {
+			$this->obj->load->view($this->layout, $data, false);
+		}
+	}
 }

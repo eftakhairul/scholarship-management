@@ -1,31 +1,106 @@
 <?php
+/**
+ * Description of Validation Rules Library
+ *
+ * @package     Library
+ * @author      Eftakhairul Islam <eftakhairul@gmail.com> http://eftakhairul.com
+ * @website     http://eftakhairul.com
+ */
 
 class MY_Form_validation extends CI_Form_validation
 {
     public function  __construct ()
     {
-        parent::CI_Form_validation();
+        parent::__construct();
         $this->set_error_delimiters('','');        
     }
 
-    public function setRulesForAddGroup()
+    public function setRulesForCreateUser()
     {
         $config = array(
             array(
-                'field' => 'associated_name',
-                'label' => 'the associated group name',
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required|alpha_numeric|callback_username_check'
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required|min_length[6]'
+            ),
+            array(
+                'field' => 'confirmedPassword',
+                'label' => 'Confirmed Password',
+                'rules' => 'required|matches[password]'
+            )
+        );
+
+        $this->set_rules($config);
+    }
+
+    public function setRulesForCreateEmployer()
+    {
+        $config = array(
+            array(
+                'field' => 'doctor_name',
+                'label' => 'Name',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'print_title',
-                'label' => 'the title for printing',
+                'field' => 'designation',
+                'label' => 'Designations',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email address',
+                'rules' => 'valid_email|required'
+            ),
+            array(
+                'field' => 'address',
+                'label' => 'Address',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'contact_number',
+                'label' => 'Contact number',
                 'rules' => 'required'
             )
         );
 
         $this->set_rules($config);
     }
-    
+
+    public function setRulesForCreateApplicant()
+    {
+        $config = array(
+           array(
+                'field' => 'name',
+                'label' => 'Full Name',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email address',
+                'rules' => 'valid_email|required'
+            ),
+            array(
+                'field' => 'address',
+                'label' => 'Address',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'contact_no',
+                'label' => 'Contact number',
+                'rules' => 'required'
+            )
+        );
+
+        $this->set_rules($config);
+    }
+
+
+
     public function setRulesForSignIn()
     {
         $config = array(
@@ -37,114 +112,56 @@ class MY_Form_validation extends CI_Form_validation
             array(
                 'field' => 'password',
                 'label' => 'Password',
-                'rules' => 'required|min_length[6]'
+                'rules' => 'required'
             )
         );
 
         $this->set_rules($config);
     }
 
-    public function setRulesForUserEntry($options = array())
+    public function setRulesForCreateJobs()
     {
         $config = array(
             array(
-                'field' => 'name',
-                'label' => 'Staff Name',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'email_address',
-                'label' => 'Email address',
-                'rules' => 'valid_email'
-            ),
-            array(
-                'field' => 'group_id',
-                'label' => 'Associated Group',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'user_type_id',
-                'label' => 'User Type',
-                'rules' => 'required'
-            ));
-
-        if (empty ($options['isEdit'])) {
-            $config = array_merge($config, array(
-                array(
-                    'field' => 'username',
-                    'label' => 'Username',
-                    'rules' => 'required|alpha_numeric|callback_username_check'
-                ))
-            );
-        }
-
-        if ( empty ($options['isEdit']) ) {
-            $config = array_merge($config, array(
-                array(
-                    'field' => 'password',
-                    'label' => 'Password',
-                    'rules' => 'required|min_length[6]'
-                ),
-                array(
-                    'field' => 'confirmedPassword',
-                    'label' => 'Confirmed Password',
-                    'rules' => 'required|matches[password]'
-                ))
-            );
-        }
-
-        $this->set_rules($config);
-    }
-    
-    public function setRulesForCreateSchedule()
-    {
-        $config = array(
-            array(
-                'field' => 'date',
-                'label' => 'Date',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'time',
-                'label' => 'Time',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'venue',
-                'label' => 'Venue',
+                'field' => 'types',
+                'label' => 'Job types',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'title',
-                'label' => 'Event',
+                'label' => 'Title',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'grace_status_id',
-                'label' => 'This field',
+                'field' => 'description',
+                'label' => 'Description',
                 'rules' => 'required'
             )
         );
 
         $this->set_rules($config);
     }
-
+    
     public function setRulesForChangePassword()
     {
         $config = array(
-                array(
+            array(
+                    'field' => 'previous_password',
+                    'label' => 'previous password',
+                    'rules' => 'required|callback_previouspassword_check'
+            ),
+            array(
                     'field' => 'password',
-                    'label' => 'Password',
+                    'label' => 'new password',
                     'rules' => 'required|min_length[6]'
-                ),
-                array(
-                    'field' => 'confirmedPassword',
-                    'label' => 'Confirmed Password',
-                    'rules' => 'required|matches[password]'
-                )
+            ),
+            array(
+                'field' => 'confirmedPassword',
+                'label' => 'confirmed password',
+                'rules' => 'required|matches[password]'
+            )
         );
-        
+
         $this->set_rules($config);
     }
-    
 }

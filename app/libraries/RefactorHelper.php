@@ -3,7 +3,8 @@
 /**
  * Description of RefactorHelper
  *
- * @author Eftakhairul & Abid
+ * @author  Eftakhairul  Islam <eftakhairul@gmail.com> http://eftakhairul.com
+ * @author  Syed Abidur Rahman
  */
 class RefactorHelper
 {

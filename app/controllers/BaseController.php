@@ -7,57 +7,78 @@
  *
  * @package     Base
  * @category    Controller
- * @author      Raju Mazumder <rajuniit@gmail.com>
  */
-
 include_once APPPATH . "libraries/DateHelper.php";
 include_once APPPATH . "libraries/DbHelper.php";
 include_once APPPATH . "libraries/RefactorHelper.php";
-
-abstract class BaseController extends Controller
+abstract class BaseController extends CI_Controller
 {
-    protected $data = array();
+	protected $data = array();
 
-    public function __construct()
-    {
-        parent::__construct();
-        
-        $this->_prepareEnvironment();
-        $this->_populateFlashData();
-    }
-    
-    protected function _prepareEnvironment()
-    {
-        $this->load->library('Layout');
-        parse_str($_SERVER['QUERY_STRING'], $_GET);
-    }
+	public function __construct()
+	{
+		parent::__construct();
 
-    protected function _populateFlashData()
-    {
-        $notify['message'] = $this->session->flashdata('message');
-        $notify['messageType'] = $this->session->flashdata('messageType');
+		$this->prepareEnvironment();
+		$this->populateFlashData();
+	}
 
-        $this->data['notification'] = $notify;
-    }
+	protected function prepareEnvironment()
+	{
+		$this->load->library('Layout');
+		parse_str($_SERVER['QUERY_STRING'], $_GET);
+	}
 
-    protected function _ensureLoggedIn()
-    {
-        if (!$this->session->userdata('username')) {
-            redirect('user');
+	protected function populateFlashData()
+	{
+		$notify['message'] = $this->session->flashdata('message');
+		$notify['messageType'] = $this->session->flashdata('messageType');
+
+		$this->data['notification'] = $notify;
+	}
+
+        protected function redirectForSuccess($redirectLink, $message)
+        {
+            $this->session->set_flashdata('message', $message);
+            $this->session->set_flashdata('messageType', 'success');
+            redirect($redirectLink);
         }
-    }
 
-    protected function _redirectForSuccess($redirectLink, $message)
-    {
-        $this->session->set_flashdata('message', $message);
-        $this->session->set_flashdata('messageType', 'success');
-        redirect($redirectLink);
-    }
+        protected function redirectForFailure($redirectLink, $message)
+        {
+            $this->session->set_flashdata('message', $message);
+            $this->session->set_flashdata('messageType', 'errormsg');
+            redirect($redirectLink);
+        }
 
-    protected function _redirectForFailure($redirectLink, $message)
-    {
-        $this->session->set_flashdata('message', $message);
-        $this->session->set_flashdata('messageType', 'errormsg');
-        redirect($redirectLink);
-    }
+        public function username_check($username)
+        {
+            $this->load->model('users');
+            if(!$this->users->checkUsernameExisted($username)){
+                 return true;
+             } else {
+                 return false;
+             }
+        }
+
+        protected function prepareLogin()
+        {
+            if (!$this->session->userdata('username')) {
+                redirect('auth/login');
+             }
+        }
+
+        protected function checkAdmin()
+        {
+            if ($this->session->userdata('userType') != ADMIN) {
+
+                $this->_redirectForFailure('user/manageUser',
+                    'You are not authorized for this section.'
+                );
+
+                return false;
+            }
+
+            return true;
+        }
 }
