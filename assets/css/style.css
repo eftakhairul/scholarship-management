@@ -54,7 +54,7 @@ a:hover {
 
 #header {
     height: 50px;
-    padding: 0 18px;
+    padding: 0 10px;
     line-height: 50px;
     background: url(../images/hdr.gif) 0 0 no-repeat;
     color: #999;
@@ -389,9 +389,8 @@ a:hover {
 }
 
 .block table tr th.centered,
-.block table tr td.centered,
-.block table tr th.action,
-.block table tr td.action {
+.block table tr td.centered {
+    width: 11%;
     text-align: center !important;
 }
 
@@ -779,7 +778,7 @@ a:hover {
     margin: 0 auto;
 }
 
-.block.small.center.login { margin-top: 100px;}
+.block.small.center.login { margin-top: 100px; }
 
 
 /* Image list */
@@ -879,7 +878,6 @@ a:hover {
     padding-bottom: 20px;
 }
 
-/*
 .block .block_content fieldset.small {
     border-radius: 5px;
     clear: both;
@@ -889,23 +887,15 @@ a:hover {
     -moz-border-radius: 5px;
 }
 
-*/
-
-.event-details {
-    padding: 20px 35px !important;
-}
-
-.block .block_content span.title {
+.block .block_content fieldset.small .title {
     color: teal;
     float: left;
-    font-size:12px;
-    font-weight: bold;
-    width: 150px;
+    font: 12px 'Lucida Grande,Helvetica,Arial,sans-serif';
+    width: 300px;
 }
-
-.block .block_content span.description {
+.block .block_content fieldset.small .description {
     clear:both;
-    font-size: 12px;
+    font-size: medium;
 }
 
 .block .block_content fieldset legend {

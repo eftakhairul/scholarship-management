@@ -38,28 +38,18 @@ class MY_Form_validation extends CI_Form_validation
         $this->set_rules($config);
     }
 
-    public function setRulesForCreateEmployer()
+    public function setRulesForCreateProfile()
     {
         $config = array(
             array(
-                'field' => 'doctor_name',
+                'field' => 'name',
                 'label' => 'Name',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'designation',
-                'label' => 'Designations',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'email',
                 'label' => 'Email address',
                 'rules' => 'valid_email|required'
-            ),
-            array(
-                'field' => 'address',
-                'label' => 'Address',
-                'rules' => 'required'
             ),
             array(
                 'field' => 'contact_number',
@@ -70,36 +60,6 @@ class MY_Form_validation extends CI_Form_validation
 
         $this->set_rules($config);
     }
-
-    public function setRulesForCreateApplicant()
-    {
-        $config = array(
-           array(
-                'field' => 'name',
-                'label' => 'Full Name',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'email',
-                'label' => 'Email address',
-                'rules' => 'valid_email|required'
-            ),
-            array(
-                'field' => 'address',
-                'label' => 'Address',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'contact_no',
-                'label' => 'Contact number',
-                'rules' => 'required'
-            )
-        );
-
-        $this->set_rules($config);
-    }
-
-
 
     public function setRulesForSignIn()
     {
@@ -112,29 +72,6 @@ class MY_Form_validation extends CI_Form_validation
             array(
                 'field' => 'password',
                 'label' => 'Password',
-                'rules' => 'required'
-            )
-        );
-
-        $this->set_rules($config);
-    }
-
-    public function setRulesForCreateJobs()
-    {
-        $config = array(
-            array(
-                'field' => 'types',
-                'label' => 'Job types',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'title',
-                'label' => 'Title',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'description',
-                'label' => 'Description',
                 'rules' => 'required'
             )
         );

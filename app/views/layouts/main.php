@@ -5,7 +5,7 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>Ministry of Health and Family Welfare</title>
+        <title>BRACU Scholarship Management Software</title>
 
         <style type="text/css" media="all">
             @import url("<?php echo site_url('assets/css/style.css'); ?>");
@@ -38,60 +38,27 @@
 
                 <div id="header">
 
-                    <h1><a href="http://mohfw.gov.bd">MOHFW</a></h1>
+                    <h1><a href="#">Scholarship</a></h1>
+
                     <ul id="nav">
-                        <li ><a href=<?php echo site_url('schedule') ?>>Schedules</a>
+
+                        <li class="active"><a href="<?php echo site_url('employer/editEmployer') ?>">Account Setting</a>
                             <ul>
-                                <li><a href=<?php echo site_url('schedule') ?>>View Schedule</a></li>
-
-                                <?php if($this->session->userdata('userType') == ADMIN OR $this->session->userdata('userType') == SUPER_ADMIN): ?>
-                                <li><a href=<?php echo site_url('schedule/createSchedule') ?>>Create Event</a></li>
-                                <?php endif;?>
-
-                                <?php if ($userType == SUPER_ADMIN): ?>
-                                 <li><a href='<?php echo site_url('schedule/searchByGroup') ?>'>Search By Group</a></li>
-                                <?php endif; ?>
-                                
+                                <li><a href=<?php echo site_url('applicant/editApplicant') ?>> Edit Profile</a></li>
+                                <li><a href="<?php echo site_url('auth/changePassword'); ?>" >Change Password </a></li>
                             </ul>
                         </li>
-
-                        <?php if ($this->session->userdata('userType') == SUPER_ADMIN) : ?>
-                        <li ><a href=<?php echo site_url('user/manageUser') ?>>Users</a>
-                            <ul>
-                                <li><a href=<?php echo site_url('user/manageUser') ?>>Manage Users</a></li>
-                                <li><a href=<?php echo site_url('user/addUser') ?>>Add User</a></li>
-                            </ul>
-                        </li>
-                        <li><a href=<?php echo site_url('group') ?>>Groups</a>
-                            <ul>
-                                <li><a href=<?php echo site_url('group') ?>>Manage Groups</a></li>
-                                <li><a href=<?php echo site_url('group/addGroup') ?>>Add Group</a></li>
-                            </ul>
-                        </li>
-                        <?php endif; ?>
-                        
-                        <li><a href='<?php echo site_url('schedule/pastschedule') ?>'>Past Schedules</a>
-                            <?php if ($this->session->userdata('userType') == SUPER_ADMIN) : ?>
-                            <ul>
-                                <?php $scheduleStatuses = $this->config->item('schedule_statuses'); foreach($scheduleStatuses AS $status => $title) : ?>
-                                <li><a href='<?php echo site_url('schedule/viewSchedules/status/' . $status) ?>'><?php echo $title ?></a></li>
-
-                                <?php endforeach ?>
-                            </ul>
-                            <?php endif; ?>
-                        </li>
-
-
-                        <li><a href=<?php echo site_url('user/changePassword/id').'/'.$this->session->userdata('user_id') ?>>Change Password</a> </li>
 
                     </ul>
 
                     <p class="user">
-                        Hello, <a href="<?php echo site_url('user/editUser/id').'/'.$this->session->userdata('user_id')?>"><?php echo $this->session->userdata('username') ?></a> |
-                        <a href="<?php echo site_url('user/logout') ?>">Logout</a>
+                        Hello, <a href="#"><?php echo $this->session->userdata('userName') ?></a> |
+                        <a href="<?php echo site_url('auth/logout') ?>">Logout</a>
                     </p>
 
                 </div>		<!-- #header ends -->
+
+
 
                 <?php if (!empty($notification['message'])) : ?>
 
@@ -108,9 +75,8 @@
                 <?php echo $content_for_layout ?>
 
                 <div id="footer">
-                    
-                    <p class="left">Powered by <a href="http://www.dghs.gov.bd/">MIS Dept, DGHS</a></p>
-                    <p class="right">Developed by <a href="http://www.rightbrainsolution.com/">Right Brain Solution Ltd.</a></p>
+
+                    <p class="right">Developed by <a href="#">copyright</a></p>
 
                 </div>
 

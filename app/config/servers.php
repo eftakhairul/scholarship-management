@@ -2,9 +2,9 @@
 
 global $config;
 
-$config['server_local']         = array('local.dghealth.tld'); //local server host name
+$config['server_local']         = array('local.scholarship.tld'); //local server host name
 $config['server_staging']       = array(''); // staging server host name
-$config['server_production']    = array('dghs.gov.bd'); // production server host name
+$config['server_production']    = array(''); // production server host name
 
 function getCurrentServer() {
 

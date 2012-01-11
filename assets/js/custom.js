@@ -1,21 +1,4 @@
 $(function () {
-
-    /* Delete record. */
-    $('#delete').live('click', function() {
-        if (!confirm('Do you really want to delete?')) {
-            return false;
-        }
-
-        var url = $(this).attr('href');
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            success: function() {
-                window.location = '';
-            }
-        });
-    });
 	
 	// Preload images
 	$.preloadCssImages();

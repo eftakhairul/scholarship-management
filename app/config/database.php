@@ -5,7 +5,7 @@
 | -------------------------------------------------------------------
 | This file will contain the settings needed to access your database.
 |
-| For complete instructions please consult the "Database Connection"
+| For complete instructions please consult the 'Database Connection'
 | page of the User Guide.
 |
 | -------------------------------------------------------------------
@@ -26,15 +26,17 @@
 |	['cachedir'] The path to the folder where cache files should be stored
 |	['char_set'] The character set used in communicating with the database
 |	['dbcollat'] The character collation used in communicating with the database
+|	['swap_pre'] A default table prefix that should be swapped with the dbprefix
+|	['autoinit'] Whether or not to automatically initialize the database.
+|	['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
+|							- good for ensuring strict SQL while developing
 |
 | The $active_group variable lets you choose which connection group to
-| make active.  By default there is only one group (the "default" group).
+| make active.  By default there is only one group (the 'default' group).
 |
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-
-// Include server list
 include_once (APPPATH . '/config/servers.php');
 
 $active_group = getCurrentServer();
@@ -43,7 +45,7 @@ $active_record = TRUE;
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root"; // Database User Name
 $db['default']['password'] = "commonrbs"; // Database User Password
-$db['default']['database'] = "dghealth-schedule"; //"dg_final"; // Database Name
+$db['default']['database'] = "scholarship"; // Database Name
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
@@ -66,10 +68,10 @@ $db['staging']['cachedir'] = "";
 $db['staging']['char_set'] = "utf8";
 $db['staging']['dbcollat'] = "utf8_unicode_ci";
 
-$db['production']['hostname'] = "172.16.16.7";
-$db['production']['username'] = "root"; // Production Database Name
-$db['production']['password'] = "dghs1212"; // Production Database User Password
-$db['production']['database'] = "dghealth-schedule"; // Production Database Name
+$db['production']['hostname'] = "localhost";
+$db['production']['username'] = ""; // Production Database Name
+$db['production']['password'] = "commonrbs"; // Production Database User Password
+$db['production']['database'] = ""; // Production Database Name
 $db['production']['dbdriver'] = "mysql";
 $db['production']['dbprefix'] = "";
 $db['production']['pconnect'] = TRUE;
@@ -80,4 +82,4 @@ $db['production']['char_set'] = "utf8";
 $db['production']['dbcollat'] = "utf8_unicode_ci";
 
 /* End of file database.php */
-/* Location: ./system/application/config/database.php */
+/* Location: ./application/config/database.php */

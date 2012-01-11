@@ -1,32 +1,46 @@
 <?php
 
 /**
- * Description of Profiles
+ * Profiles of Users
  *
- * @author Syed Abidur Rahman <aabid048@gmail.com>
+ * @package     Model
+ * @author      Eftakhairul Islam <eftakhairul@gmail.com> (http://eftakhairul.com)
  */
 
-class Profiles extends MY_Model
+class Proofiles extends MY_Model
 {
-    public function  __construct ()
+    public function  __construct()
     {
         parent::__construct();
-        $this->loadTable('profiles', 'profile_id');
+        $this->loadTable('profiles', 'user_id');
     }
 
     public function save(array $data)
     {
-        $data['created_date'] = date('Y-m-d');
+        if (empty($data)) {
+            return false;
+        }
+
+        $data['create_date'] = date('Y-m-d');
+
         return $this->insert($data);
     }
 
-    public function modify(array $data)
+    public function getDetailsByUserId($userId = null)
     {
-        $select = "UPDATE `{$this->table}`
-                   SET `name` = {$this->db->escape($data['name'])},
-                   `email_address` = {$this->db->escape($data['email_address'])}
-                   WHERE `user_id` = {$this->db->escape($data['user_id'])}";
+        if (empty($userId)) {
+            return false;
+        }
 
-        $this->db->query($select);
+        return $this->find("{$this->table}.user_id = {$userId}");
+    }
+
+    public function modify(array $data, $userId = null)
+    {
+        if (empty($data) OR empty($userId)) {
+            return false;
+        }
+
+        return $this->update($data, $userId);
     }
 }
