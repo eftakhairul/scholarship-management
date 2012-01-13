@@ -48,15 +48,28 @@
             </p>
 
             <p>
-                <label for="title">
+                <label for="code">
                    Program Code: <span class="required">*</span>
                 </label>
 
-                <input id="title" type="text mini" name="code" class="text" value= "<?php echo $program['code']; ?>" />
+                <input id="code" type="text mini" name="code" class="text" value= "<?php echo $program['code']; ?>" />
 
                 <br />
                 <span class='note error'>
                     <?php echo form_error('code'); ?>
+                </span>
+            </p>
+
+            <p>
+                <label for="lowest_credits">
+                   Lowest Credits: <span class="required">*</span>
+                </label>
+
+                <input id="lowest_credits" type="text mini" name="lowest_credits" class="text" value= "<?php echo $program['lowest_credits'] ?>" />
+
+                <br />
+                <span class='note error'>
+                    <?php echo form_error('lowest_credits'); ?>
                 </span>
             </p>
 

@@ -29,17 +29,7 @@ class Users extends MY_Model
         $data['password']    = md5($data['password']);
         $data['create_date'] = date('Y-m-d');
 
-        $userId =  $this->insert($data);
-
-        $profiles = array(
-            'user_id'       =>  $userId,
-            'name'           => $data['name'],
-            'email'          => $data['email'],
-            'contact_number' => $data['contact_number']
-        );
-
-        $CI->profiles->save($profiles);
-        return $userId;
+        return $this->insert($data);
     }
 
     public function validateUser(array $data)
@@ -47,18 +37,6 @@ class Users extends MY_Model
         $data = $this->removeNonAttributeFields($data);
         $data['password'] = md5($data['password']);
         return $this->find($data, 'username, user_id, types');
-    }
-
-    public function getAll($offset = 0)
-    {
-        $limit = $this->config->item('rowsPerPage');
-
-        return $this->findAll(null, '*', null, $offset, $limit);
-    }
-
-    public function countAll()
-    {
-        return $this->db->count_all("{$this->table}");
     }
 
     public function checkUsernameExisted($username)
@@ -74,16 +52,12 @@ class Users extends MY_Model
         return $this->find(array('password' => $previous_password), $this->primaryKey);
     }
 
-    public function modify(array $data, $userId = null)
+    public function modify(array $data)
     {
-        if (empty($data) OR empty($userId)) {
-            return false;
-        }
-
-        if (!empty($data['password'])) {
+        if(!empty($data['password'])){
             $data['password'] = md5($data['password']);
         }
 
-        return $this->update($data, $userId);
+        return $this->update($data, $data['user_id']);
     }
 }

@@ -7,7 +7,7 @@
     <?php endif ?>
 
     <div class="block_head">
-        <h2>Create New Program</h2>
+        <h2>Add New Tuition Fees</h2>
     </div>
 
     <div class="block_content">
@@ -48,11 +48,24 @@
             </p>
 
             <p>
-                <label for="title">
+                <label for="lowest_credits">
+                   Lowest Credits: <span class="required">*</span>
+                </label>
+
+                <input id="lowest_credits" type="text mini" name="lowest_credits" class="text" value= "<?php echo set_value('lowest_credits')?>" />
+
+                <br />
+                <span class='note error'>
+                    <?php echo form_error('lowest_credits'); ?>
+                </span>
+            </p>
+
+            <p>
+                <label for="code">
                    Program Code: <span class="required">*</span>
                 </label>
 
-                <input id="title" type="text mini" name="code" class="text" value= "<?php echo set_value('code')?>" />
+                <input id="code" type="text mini" name="code" class="text" value= "<?php echo set_value('code')?>" />
 
                 <br />
                 <span class='note error'>

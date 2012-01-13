@@ -7,7 +7,6 @@
  */
 
 include_once APPPATH . "controllers/BaseController.php";
-
 class AuthController extends BaseController
 {
 	public function __construct()
@@ -66,7 +65,7 @@ class AuthController extends BaseController
             if($this->form_validation->run()){
                 $_POST['user_id'] = $this->session->userdata('user_id');
                 $this->users->modify($_POST);
-                $this->redirectForSuccess('scholarship/add', 'Password is changed successfully.');
+                $this->redirectForSuccess('home', 'Password is changed successfully.');
             } else {
                 $this->data['error'] = 'Enter your password again.';
             }
@@ -78,26 +77,11 @@ class AuthController extends BaseController
 
     public function previouspassword_check($previous_password)
     {
+
         if($this->users->previousPasswordExisted($previous_password)){
             return true;
-        };
+            };
 
         return false;
     }
-
-    public function email_check($email)
-    {
-        $check = $this->users->email_check($email);
-
-        if ($check) {
-            $this->form_validation->set_message('email_check', 'The email "' . $email . '" already exists.');
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-	public function recoverPassword()
-	{
-	}
 }

@@ -11,13 +11,14 @@
 include_once APPPATH . "controllers/BaseController.php";
 class ScholarshipController extends BaseController
 {
-    private $userId;
 
     public function __construct()
 	{
 		parent::__construct();
 
         $this->load->library('form_validation');
+        $this->load->library('students');
+        $this->load->library('programs');
     }
 
     public function index()
@@ -51,20 +52,21 @@ class ScholarshipController extends BaseController
 
     private function checkLastSemesterCredit($data)
     {
-        if($data['last_semester_credit'] < 6.0)
-        {
-            $this->data['error'] = "Last Semester's credit is less than 6";
+        if($data['credit_requirement'] <= $data['credit_completed']) {
+            $this->data['error'] = 'Credit reaches to Degree Completion .';
             return false;
         }
 
-        return true;
-    }
+        $StudentIdDetails  = $this->getDetailsFromStudentId($data['varsity_student_id']);
+        $programDeatils = $this->programs->getDepartmentByProgramCode($StudentIdDetails['program_code']);
 
-    private function degreeRequirement($data)
-    {
-        if($data['credit_requirement'] <= $data['credit_completed'])
+        if( ($data['credit_requirement'] - $data['credit_completed']) < $data['last_semester_credit']) {
+            return true;
+        }
+
+        if($data['last_semester_credit'] < $programDeatils['lowest_credits'])
         {
-            $this->data['error'] = 'Credit reaches to Degree Completion .';
+            $this->data['error'] = "Last Semester's credit is less";
             return false;
         }
 

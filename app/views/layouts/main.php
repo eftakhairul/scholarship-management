@@ -37,6 +37,7 @@
                     <h1><a href="#">Scholarship Management</a></h1>
 
                     <ul id="nav">
+                        <li class="active"><a href="<?php echo site_url('student') ?>">Students</a>
 
                         <li class="active"><a href="<?php echo site_url('department') ?>">Department</a>
 
@@ -48,6 +49,12 @@
 
                             <ul>
                                 <li><a href="<?php echo site_url('program/add'); ?>" >Create </a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="<?php echo site_url('tuition') ?>">Tuition Fees</a>
+
+                            <ul>
+                                <li><a href="<?php echo site_url('tuition/add'); ?>" >Create </a></li>
                             </ul>
                         </li>
                         <li class="active"><a href="<?php echo site_url('auth/changePassword') ?>">Account Setting</a>

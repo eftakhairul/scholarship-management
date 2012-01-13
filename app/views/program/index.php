@@ -3,7 +3,7 @@
     <div class="block_head">
         <h2>Program Details</h2>
         <ul>
-            <li><a href="<?php echo site_url('program/add') ?>">Create Program</a></li>
+            <li><a href="<?php echo site_url('program/add') ?>">Add Program</a></li>
         </ul>
         
     </div> <!--.block_head ends -->

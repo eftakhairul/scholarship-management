@@ -55,7 +55,7 @@ class Programs extends MY_Model
     {
         if(empty($code)) return false;
 
-        return $this->find("{$this.table}.code = '{$code}'", "department_name");
+        return $this->find("{$this->table}.code = '{$code}'");
     }
 
     public function delete($id)
