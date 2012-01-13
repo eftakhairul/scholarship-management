@@ -613,7 +613,8 @@ a:hover {
     outline: none;
     vertical-align: middle;
 }
-
+.block form input.text.tiny { width: 50px; }
+.block form input.text.mini { width: 100px; }
 .block form input.text.small { width: 200px; }
 .block form input.text.medium { width: 450px; }
 .block form input.text.big { width: 900px; }

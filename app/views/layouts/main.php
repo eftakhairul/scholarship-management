@@ -1,12 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
     <head>
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-        <title>BRACU Scholarship Management Software</title>
-
+        <title>BRACU Scholarship Management</title>
         <style type="text/css" media="all">
             @import url("<?php echo site_url('assets/css/style.css'); ?>");
             @import url("<?php echo site_url('assets/css/jquery.wysiwyg.css'); ?>");
@@ -38,13 +34,25 @@
 
                 <div id="header">
 
-                    <h1><a href="#">Scholarship</a></h1>
+                    <h1><a href="#">Scholarship Management</a></h1>
 
                     <ul id="nav">
 
-                        <li class="active"><a href="<?php echo site_url('employer/editEmployer') ?>">Account Setting</a>
+                        <li class="active"><a href="<?php echo site_url('department') ?>">Department</a>
+
                             <ul>
-                                <li><a href=<?php echo site_url('applicant/editApplicant') ?>> Edit Profile</a></li>
+                                <li><a href="<?php echo site_url('department/add'); ?>" >Create </a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="<?php echo site_url('program') ?>">Program</a>
+
+                            <ul>
+                                <li><a href="<?php echo site_url('program/add'); ?>" >Create </a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="<?php echo site_url('auth/changePassword') ?>">Account Setting</a>
+
+                            <ul>
                                 <li><a href="<?php echo site_url('auth/changePassword'); ?>" >Change Password </a></li>
                             </ul>
                         </li>
@@ -57,8 +65,6 @@
                     </p>
 
                 </div>		<!-- #header ends -->
-
-
 
                 <?php if (!empty($notification['message'])) : ?>
 
@@ -76,7 +82,7 @@
 
                 <div id="footer">
 
-                    <p class="right">Developed by <a href="#">copyright</a></p>
+                    <p class="right">Developed by <a href="http://eftakhairul.com">Eftakhairul Islan</a></p>
 
                 </div>
 
